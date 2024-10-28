@@ -1,0 +1,18 @@
+version: 2
+
+snapshot:
+  - name: sat_customer_snapshot
+    config:
+      target_database: SAMPLE_DATA
+      target_schema: "snapshots"          # Target schema where the snapshot table is stored
+      unique_key: ["C_CUSTKEY"]          # Unique key to identify the business entity
+      strategy: timestamp                  # The strategy to track changes (timestamp or check)
+      updated_at: "CURRENT_TIMESTAMP"        # Column in the source table for tracking updates 
+
+sources:
+- name: sample_data_snapshot
+  description: ''
+  database: SAMPLE_DATA
+  schema: SFC_SAMPLE
+  tables:
+  - name: CUSTOMER

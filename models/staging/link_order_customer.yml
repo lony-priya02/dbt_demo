@@ -1,0 +1,12 @@
+version: 2
+sources:
+- name: sample_data_snowflake
+  description: ''
+  database: SAMPLE_DATA
+  schema: SFC_SAMPLE
+  tables:
+  - name: ORDERS
+    description: ''
+    tests:
+        - unique
+        - not_null

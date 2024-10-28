@@ -1,0 +1,6 @@
+
+version: 2
+
+models:
+  - name: hub_customer
+  - name: link_order_customer
