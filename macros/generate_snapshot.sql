@@ -1,20 +1,14 @@
--- macros/generate_snapshot_sql.sql
-{% macro generate_snapshot_sql(staging_tables) %}
-{% for hub_customer in staging_tables %}
+{% macro generate_snapshot(snapshot_name, source_schema, source_table, unique_key, updated_at) %}
+{% snapshot {{ sat_order_snapshot }} %}
+    
     {{ config(
-        materialized='snapshot',
-        unique_key='C_CUSTKEY',
-        strategy='timestamp',
-        updated_at='UPDATE_DT',
-        target_schema=generate_schema_name('STAGING'),
-        alias=table_name ~ '_SNAPSHOT'
+materialized='snapshot',
+unique_key='C_CUSTKEY',
+strategy='timestamp',
+updated_at='UPDATE_DT',
+target_schema=generate_schema_name('snapshots')
     ) }}
 
-    select * from {{ ref(hub_customer) }}
+select * from {{ source(source_schema, source_table) }}
 {% endfor %}
 {% endmacro %}
-
-
-snapshots/my_snapshots.sql
-{% set raw_tables = ['WFD_TABLE'] %}
-{{ generate_snapshot_sql(raw_tables) }}

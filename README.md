@@ -1,5 +1,7 @@
 Welcome to your new dbt project!
 
+This Project is solely for developers, where they can create tables, views and other objects that fall under the schema, and any alteration with respect to snowflake infrstructure that includes Database, Schema, Roles, Warehouses, etc 
+
 ### Using the starter project
 
 Try running the following commands:
