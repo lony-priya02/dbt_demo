@@ -1,13 +1,10 @@
-
-# Name your project! Project names should contain only lowercase characters
+#Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 's4_'
-version: '1.0.0'
-
+name: "s4_"
+version: "1.0.0"
 # This setting configures which "profile" dbt uses for this project.
-profile: 's4_'
-
+profile: "s4_"
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
 # found in the "models/" directory. You probably won't need to change these!
@@ -17,15 +14,10 @@ test-paths: ["tests"]
 seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
-
-clean-targets:         # directories to be removed by `dbt clean`
+clean-targets: # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
-
-
-# Configuring models
-# Full documentation: https://docs.getdbt.com/docs/configuring-models
-
+  # Configuring models
 # In this example config, we tell dbt to build all models in the example/
 # directory as views. These settings can be overridden in the individual model
 # files using the `{{ config(...) }}` macro.
@@ -37,12 +29,25 @@ models:
     staging:
       +schema: "staging_schema"
       +materialized: table
-
 tests:
   +store_failures: true
-
 snapshots:
   s4_:
-      +materialized: snapshot
-      +target_schema: "snapshots"
-      +unique_key: C_CUSTKEY
+    +target_schema: "snapshots"
+    +unique_key: C_CUSTKEY
+macros:
+  generate_snapshot:
+    description: "Generates the SQL for a snapshot based on the provided schema, table, unique key, and updated_at column."
+    arguments:
+      source_schema:
+        description: "The schema where the source table is located."
+        type: string
+      source_table:
+        description: "The name of the source table."
+        type: string
+      unique_key:
+        description: "The column that uniquely identifies each row in the source table."
+        type: string
+      updated_at:
+        description: "The column that contains the timestamp for when each row was last updated."
+        type: string

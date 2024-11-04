@@ -1,31 +1,31 @@
 version: 2
 sources:
 - name: sample_data_snowflake
-  description: ''
+  description: 'source database, schemas'
   database: SAMPLE_DATA
   schema: SFC_SAMPLE
   tables:
   - name: CUSTOMER
-    description: ''
+    description: 'source table for customer'
     columns:
     - name: C_CUSTKEY
-      description: ''
+      description: 'customer key'
       tests:
         - unique
         - not_null
     - name: C_NAME
-      description: ''
+      description: 'customer name'
     - name: C_ADDRESS
-      description: ''
+      description: 'customer address'
     - name: C_NATIONKEY
-      description: ''
+      description: 'customer nation key'
     - name: C_PHONE
-      description: ''
+      description: 'customers phone number'
     - name: C_ACCTBAL
-      description: ''
+      description: 'customer actual balance'
     - name: C_MKTSEGMENT
-      description: ''
+      description: 'customer market segment'
     - name: C_COMMENT
-      description: ''
+      description: 'customer comment'
     - name: UPDATE_DT
-      description: ''
+      description: 'update date'
