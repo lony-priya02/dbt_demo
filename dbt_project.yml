@@ -35,19 +35,3 @@ snapshots:
   s4_:
     +target_schema: "snapshots"
     +unique_key: C_CUSTKEY
-macros:
-  generate_snapshot:
-    description: "Generates the SQL for a snapshot based on the provided schema, table, unique key, and updated_at column."
-    arguments:
-      source_schema:
-        description: "The schema where the source table is located."
-        type: string
-      source_table:
-        description: "The name of the source table."
-        type: string
-      unique_key:
-        description: "The column that uniquely identifies each row in the source table."
-        type: string
-      updated_at:
-        description: "The column that contains the timestamp for when each row was last updated."
-        type: string

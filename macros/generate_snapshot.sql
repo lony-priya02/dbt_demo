@@ -9,6 +9,5 @@
     ) }}
 
     select * from {{ source(source_schema, source_table) }}
-
-{% endsnapshot %}
+    
 {% endmacro %}
